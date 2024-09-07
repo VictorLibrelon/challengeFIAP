@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "806039340896",
+    "project_id": "flutter-project-7826e",
+    "storage_bucket": "flutter-project-7826e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:806039340896:android:62d45e1f18a03605ca8005",
+        "android_client_info": {
+          "package_name": "com.example.fiap_challenge_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRXyxfb5LiLo3E2GpB_siwfIfoZXdiAuU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
