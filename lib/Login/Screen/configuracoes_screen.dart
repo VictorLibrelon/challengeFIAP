@@ -22,10 +22,102 @@ class _ConfiguracoesScreenState extends State<ConfiguracoesScreen> {
         title: const Text('Configurações'),
         backgroundColor: const Color(0xFF3cc4ef),
       ),
-      body: const Center(
-        child: Text(
-          'Você está na tela de Configurações',
-          style: TextStyle(fontSize: 24),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Sessão Conta
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(
+                'Conta',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.person),
+              title: Text('Editar Perfil'),
+              trailing: Icon(Icons.arrow_forward_ios),
+              onTap: () {
+                // Navegar para tela de edição de perfil
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.credit_card),
+              title: Text('Assinatura'),
+              trailing: Icon(Icons.arrow_forward_ios),
+              onTap: () {
+                // Navegar para tela de assinatura
+              },
+            ),
+            
+            // Sessão Segurança
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(
+                'Segurança',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.lock),
+              title: Text('Privacidade'),
+              trailing: Icon(Icons.arrow_forward_ios),
+              onTap: () {
+                // Navegar para tela de privacidade
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.security),
+              title: Text('Resetar Senha'),
+              trailing: Icon(Icons.arrow_forward_ios),
+              onTap: () {
+                // Navegar para tela de reset de senha
+              },
+            ),
+
+            // Sessão Preferências
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(
+                'Preferências',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.notifications),
+              title: Text('Notificações'),
+              trailing: Icon(Icons.arrow_forward_ios),
+              onTap: () {
+                // Navegar para tela de notificações
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.color_lens),
+              title: Text('Tema'),
+              trailing: Icon(Icons.arrow_forward_ios),
+              onTap: () {
+                // Navegar para tela de tema (claro/escuro)
+              },
+            ),
+
+            // Sessão Sair
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(
+                'Sair',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.exit_to_app),
+              title: Text('Sair da Conta'),
+              trailing: Icon(Icons.arrow_forward_ios),
+              onTap: () {
+                // Lógica para sair da conta
+              },
+            ),
+          ],
         ),
       ),
       bottomNavigationBar: Theme(
