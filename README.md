@@ -1,4 +1,5 @@
 Descrição do Projeto
+
 Este projeto é um aplicativo de caronas desenvolvido utilizando o Flutter. O app permite que os usuários ofereçam e reservem caronas, além de acumularem pontos (kudos) que podem ser trocados por brindes. As funcionalidades incluem autenticação via e-mail, Google e número de telefone. O backend é gerenciado pelo Firebase.
 
 
