@@ -1,13 +1,13 @@
+import 'package:fiap_challenge_project/Login/Screen/solicitar_carona_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:fiap_challenge_project/Login/Screen/home_screen.dart';
 import 'package:fiap_challenge_project/Login/Screen/login.dart';
-import 'package:fiap_challenge_project/Login/Screen/reservas_screen.dart';
 import 'package:fiap_challenge_project/Login/Screen/carona_screen.dart';
 import 'package:fiap_challenge_project/Login/Screen/kudos_screen.dart';
 import 'package:fiap_challenge_project/Login/Screen/configuracoes_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:provider/provider.dart'; 
+import 'package:provider/provider.dart';
 import 'Login/Services/carona_provider.dart'; // Importar o CaronaProvider
 
 void main() async {
@@ -16,7 +16,8 @@ void main() async {
 
   runApp(
     ChangeNotifierProvider(
-      create: (context) => CaronaProvider(), // Criar uma instância do CaronaProvider
+      create: (context) =>
+          CaronaProvider(), // Criar uma instância do CaronaProvider
       child: MyApp(),
     ),
   );
@@ -32,8 +33,8 @@ class MyApp extends StatelessWidget {
       initialRoute: '/login',
       routes: {
         '/home': (context) => HomeScreen(),
-        '/reservas': (context) => ReservasScreen(),
         '/carona': (context) => CaronaScreen(),
+        '/solicitar': (context) => SolicitarCaronaScreen(),
         '/kudos': (context) => KudosScreen(),
         '/configuracoes': (context) => ConfiguracoesScreen(),
         '/login': (context) => const LoginScreen(),
@@ -51,4 +52,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-

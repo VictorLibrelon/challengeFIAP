@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import '../Widget/bottom_navigation_bar.dart'; // O caminho do widget de navegação
-import 'package:google_maps_flutter/google_maps_flutter.dart'; // Para o mapa
+import 'package:provider/provider.dart';
+import '../Model/carona_model.dart';
+import '../Services/carona_provider.dart';
+import '../Widget/bottom_navigation_bar.dart';
+import 'chat_screen.dart';
 
 class SolicitarCaronaScreen extends StatefulWidget {
   @override
@@ -12,14 +15,60 @@ class _SolicitarCaronaScreenState extends State<SolicitarCaronaScreen> {
   int _expandedCardIndex = -1; // Controla o índice do card expandido
 
   List<Map<String, dynamic>> caronas = [
-    {'origem': 'A', 'destino': 'B', 'motorista': 'João', 'horario': '10:00'},
-    {'origem': 'C', 'destino': 'D', 'motorista': 'Maria', 'horario': '11:00'},
-    {'origem': 'E', 'destino': 'F', 'motorista': 'Carlos', 'horario': '12:00'},
-    {'origem': 'G', 'destino': 'H', 'motorista': 'Ana', 'horario': '13:00'},
-    {'origem': 'I', 'destino': 'J', 'motorista': 'Paulo', 'horario': '14:00'},
-    {'origem': 'K', 'destino': 'L', 'motorista': 'Pedro', 'horario': '15:00'},
-    {'origem': 'M', 'destino': 'N', 'motorista': 'Luiza', 'horario': '16:00'},
-    {'origem': 'O', 'destino': 'P', 'motorista': 'Ricardo', 'horario': '17:00'}
+    {
+      'origem': 'Shopping Aricanduva',
+      'destino': 'Rua Tombu',
+      'motorista': 'João',
+      'horario': '10:00',
+      'foto': 'images/profile1.jpg',
+      'rating': 4.5,
+      'imagemrota': 'images/imagemrota1.png',
+    },
+    {
+      'origem': 'Rua Tombu',
+      'destino': 'Rua Olga Silveira Campor',
+      'motorista': 'Maria',
+      'horario': '11:00',
+      'foto': 'images/profile2.jpg',
+      'rating': 4.8,
+      'imagemrota': 'images/imagemrota2.png',
+    },
+    {
+      'origem': 'Rua Tombu',
+      'destino': 'Avenida Paulista',
+      'motorista': 'Carlos',
+      'horario': '12:00',
+      'foto': 'images/profile3.jpg',
+      'rating': 4.2,
+      'imagemrota': 'images/imagemrota3.png',
+    },
+    {
+      'origem': 'Metro Itaquera',
+      'destino': 'Shopping Aricanduva',
+      'motorista': 'Ana',
+      'horario': '13:00',
+      'foto': 'images/profile4.jpg',
+      'rating': 4.9,
+      'imagemrota': 'images/imagemrota4.png',
+    },
+    {
+      'origem': 'Parque do Carmo',
+      'destino': 'Metro Carrão',
+      'motorista': 'Paulo',
+      'horario': '14:00',
+      'foto': 'images/profile5.jpg',
+      'rating': 4.3,
+      'imagemrota': 'images/imagemrota5.png',
+    },
+    {
+      'origem': 'Metro Tatuapé',
+      'destino': 'Shopping Aricanduva',
+      'motorista': 'Pedro',
+      'horario': '15:00',
+      'foto': 'images/profile1.jpg',
+      'rating': 4.7,
+      'imagemrota': 'images/imagemrota6.png',
+    }
   ];
 
   void _onItemTapped(int index) {
@@ -35,22 +84,48 @@ class _SolicitarCaronaScreenState extends State<SolicitarCaronaScreen> {
     });
   }
 
-  // Simulação de função de reserva
-  void _reservarCarona(int index) {
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: Text('Carona reservada com ${caronas[index]['motorista']}!'),
-    ));
+  void _reservarCarona(BuildContext context, int index) {
+    final caronaData = caronas[index];
+    final motoristaNome = caronaData['motorista'] ??
+        'Nome não disponível'; // Fornece um valor padrão
 
-    // Adicionar lógica de reserva e armazenar as informações da carona
+    final carona = Carona(
+      departureLocation: caronaData['origem'],
+      destinationLocation: caronaData['destino'],
+      dateTime: DateTime.parse('2024-09-19 ${caronaData['horario']}'),
+      motoristaNome: motoristaNome,
+      profileImageUrl: caronaData['foto'], // Passa o nome do motorista
+    );
+
+    // Adiciona a carona à lista de reservadas
+    Provider.of<CaronaProvider>(context, listen: false).reserveCarona(carona);
+
+    // Exibe uma confirmação de reserva
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Carona reservada com sucesso!')),
+    );
   }
 
-  // Simulação de entrar em contato com o motorista
   void _entrarEmContato(int index) {
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: Text('Entrando em contato com ${caronas[index]['motorista']}'),
-    ));
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) =>
+            ChatScreen(motorista: caronas[index]['motorista']),
+      ),
+    );
+  }
 
-    // Implementar a lógica de contato com o motorista
+  Widget _buildRatingStars(double rating) {
+    return Row(
+      children: List.generate(5, (index) {
+        return Icon(
+          index < rating ? Icons.star : Icons.star_border,
+          color: Colors.yellow,
+          size: 18,
+        );
+      }),
+    );
   }
 
   @override
@@ -69,8 +144,21 @@ class _SolicitarCaronaScreenState extends State<SolicitarCaronaScreen> {
             child: Column(
               children: [
                 ListTile(
-                  title: Text('${caronas[index]['origem']} ➡️ ${caronas[index]['destino']}'),
-                  subtitle: Text('Motorista: ${caronas[index]['motorista']} | Horário: ${caronas[index]['horario']}'),
+                  leading: CircleAvatar(
+                    backgroundImage: AssetImage(caronas[index]['foto']),
+                    radius: 30,
+                  ),
+                  title: Text(
+                      '${caronas[index]['origem']} ➡️ ${caronas[index]['destino']}'),
+                  subtitle: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Motorista: ${caronas[index]['motorista']}'),
+                      SizedBox(height: 5),
+                      _buildRatingStars(caronas[index]['rating']),
+                      Text('Horário: ${caronas[index]['horario']}'),
+                    ],
+                  ),
                   onTap: () => _expandCard(index),
                 ),
                 if (_expandedCardIndex == index)
@@ -78,33 +166,9 @@ class _SolicitarCaronaScreenState extends State<SolicitarCaronaScreen> {
                     children: [
                       Container(
                         height: 200,
-                        child: GoogleMap(
-                          initialCameraPosition: CameraPosition(
-                            target: LatLng(-23.5505, -46.6333), // Localização exemplo
-                            zoom: 12,
-                          ),
-                          markers: {
-                            Marker(
-                              markerId: MarkerId('origem'),
-                              position: LatLng(-23.5505, -46.6333), // Local de origem
-                              infoWindow: InfoWindow(title: 'Origem'),
-                            ),
-                            Marker(
-                              markerId: MarkerId('destino'),
-                              position: LatLng(-23.5555, -46.6388), // Local de destino
-                              infoWindow: InfoWindow(title: 'Destino'),
-                            ),
-                          },
-                          polylines: {
-                            Polyline(
-                              polylineId: PolylineId('rota'),
-                              color: Colors.blue,
-                              points: [
-                                LatLng(-23.5505, -46.6333),
-                                LatLng(-23.5555, -46.6388),
-                              ],
-                            ),
-                          },
+                        child: Image.asset(
+                          caronas[index]['imagemrota'],
+                          fit: BoxFit.cover,
                         ),
                       ),
                       Padding(
@@ -113,15 +177,27 @@ class _SolicitarCaronaScreenState extends State<SolicitarCaronaScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             ElevatedButton(
-                              onPressed: () => _reservarCarona(index),
-                              child: Text('Reservar'),
+                              onPressed: () => _reservarCarona(context, index),
+                              child: Text(
+                                'Reservar',
+                                style: TextStyle(
+                                  fontSize: 13,
+                                  color: Colors.white,
+                                ),
+                              ),
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: Color(0xFF3cc4ef),
                               ),
                             ),
                             ElevatedButton(
                               onPressed: () => _entrarEmContato(index),
-                              child: Text('Entrar em contato'),
+                              child: Text(
+                                'Entrar em contato',
+                                style: TextStyle(
+                                  fontSize: 13,
+                                  color: Colors.white,
+                                ),
+                              ),
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: Color(0xFF3cc4ef),
                               ),

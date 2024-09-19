@@ -22,8 +22,10 @@ class _EditCaronaFormState extends State<EditCaronaForm> {
   @override
   void initState() {
     super.initState();
-    _departureController = TextEditingController(text: widget.carona.departureLocation);
-    _destinationController = TextEditingController(text: widget.carona.destinationLocation);
+    _departureController =
+        TextEditingController(text: widget.carona.departureLocation);
+    _destinationController =
+        TextEditingController(text: widget.carona.destinationLocation);
     _selectedDateTime = widget.carona.dateTime;
   }
 
@@ -49,7 +51,8 @@ class _EditCaronaFormState extends State<EditCaronaForm> {
       );
       if (time != null) {
         setState(() {
-          _selectedDateTime = DateTime(picked.year, picked.month, picked.day, time.hour, time.minute);
+          _selectedDateTime = DateTime(
+              picked.year, picked.month, picked.day, time.hour, time.minute);
         });
       }
     }
@@ -73,7 +76,8 @@ class _EditCaronaFormState extends State<EditCaronaForm> {
           SizedBox(height: 16.0),
           Row(
             children: [
-              Text('Horário: ${_selectedDateTime.hour}:${_selectedDateTime.minute.toString().padLeft(2, '0')}'),
+              Text(
+                  'Horário: ${_selectedDateTime.hour}:${_selectedDateTime.minute.toString().padLeft(2, '0')}'),
               Spacer(),
               TextButton(
                 onPressed: () => _selectDateTime(context),
@@ -97,6 +101,7 @@ class _EditCaronaFormState extends State<EditCaronaForm> {
               departureLocation: _departureController.text,
               destinationLocation: _destinationController.text,
               dateTime: _selectedDateTime,
+              motoristaNome: 'Victor Librelon', profileImageUrl: 'images/profile.png',
             );
             widget.onEdit(editedCarona);
             Navigator.of(context).pop();

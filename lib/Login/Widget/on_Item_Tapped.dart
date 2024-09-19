@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../Screen/solicitar_carona_screen.dart';
+
 void handleItemTapped(
     BuildContext context, int index, ValueChanged<int> onItemTapped) {
   // Atualize o índice selecionado
@@ -11,10 +13,13 @@ void handleItemTapped(
       Navigator.pushReplacementNamed(context, '/home');
       break;
     case 1:
-      Navigator.pushReplacementNamed(context, '/reservas');
+      Navigator.pushReplacementNamed(context, '/carona');
       break;
     case 2:
-      Navigator.pushReplacementNamed(context, '/carona');
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => SolicitarCaronaScreen()),
+      );
       break;
     case 3:
       Navigator.pushReplacementNamed(context, '/kudos');

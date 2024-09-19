@@ -32,6 +32,8 @@ class _CaronaScreenState extends State<CaronaScreen> {
       departureLocation: departureLocation,
       destinationLocation: destinationLocation,
       dateTime: dateTime,
+      motoristaNome: 'Victor Librelon',
+      profileImageUrl: 'images/profile.png',
     ));
   }
 
@@ -96,7 +98,7 @@ class _CaronaScreenState extends State<CaronaScreen> {
                   children: caronaProvider.offeredRides.map((carona) {
                     int index = caronaProvider.offeredRides.indexOf(carona);
                     return CaronaOferecida(
-                      imageUrl: 'images/profile.jpg',
+                      imageUrl: 'images/profile.png',
                       userName: 'Victor Librelon',
                       rating: 4.5,
                       departurePoint: carona.departureLocation,

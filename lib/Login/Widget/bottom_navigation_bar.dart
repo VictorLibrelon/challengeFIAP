@@ -22,12 +22,12 @@ class MyBottomNavigationBar extends StatelessWidget {
           label: 'Home',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.search),
-          label: 'Reservas',
+          icon: Icon(Icons.directions_car),
+          label: 'Oferecer Carona',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.directions_car),
-          label: 'Carona',
+          icon: Icon(Icons.add_box),
+          label: 'Solicitar Carona',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.card_giftcard),

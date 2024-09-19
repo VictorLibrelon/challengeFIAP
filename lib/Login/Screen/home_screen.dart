@@ -116,11 +116,56 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
 
-            // Sessão de Caronas Reservadas
+            // Nova Sessão: Caronas Reservadas
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 'Caronas Reservadas',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(bottom: 10.0),
+              child: Consumer<CaronaProvider>(
+                builder: (context, caronaProvider, child) {
+                  if (caronaProvider.reservedRides.isEmpty) {
+                    // Exibe a mensagem se não houver caronas reservadas
+                    return Center(
+                      child: Text(
+                        'Nenhuma Carona Reservada',
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.grey,
+                        ),
+                      ),
+                    );
+                  } else {
+                    // Exibe as caronas reservadas
+                    return Column(
+                      children: caronaProvider.reservedRides.map((carona) {
+                        return CaronaReservada(
+                          imageUrl: carona.profileImageUrl,
+                          userName: carona.motoristaNome.isNotEmpty
+                              ? carona.motoristaNome
+                              : 'Nome não disponível', // Usa o nome do motorista
+                          rating: 4.5, // Exemplo de rating fixo
+                          departurePoint: carona.departureLocation,
+                          departureTime:
+                              '${carona.dateTime.hour}:${carona.dateTime.minute.toString().padLeft(2, '0')}',
+                          destination: carona.destinationLocation,
+                        );
+                      }).toList(),
+                    );
+                  }
+                },
+              ),
+            ),
+
+            // Renomeada Sessão: Caronas Disponíveis
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                'Caronas em Destaque',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ),
