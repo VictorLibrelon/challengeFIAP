@@ -1,3 +1,4 @@
+import 'package:fiap_challenge_project/Login/Screen/futuro_screen.dart';
 import 'package:flutter/material.dart';
 import '../Widget/bottom_navigation_bar.dart'; // Corrija o caminho se necessário
 
@@ -39,7 +40,11 @@ class _ConfiguracoesScreenState extends State<ConfiguracoesScreen> {
               title: Text('Editar Perfil'),
               trailing: Icon(Icons.arrow_forward_ios),
               onTap: () {
-                // Navegar para tela de edição de perfil
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => EscolherTransporteScreen()),
+                );
               },
             ),
             ListTile(
@@ -50,7 +55,7 @@ class _ConfiguracoesScreenState extends State<ConfiguracoesScreen> {
                 // Navegar para tela de assinatura
               },
             ),
-            
+
             // Sessão Segurança
             Padding(
               padding: const EdgeInsets.all(16.0),

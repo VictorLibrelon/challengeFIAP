@@ -18,7 +18,7 @@ class _SolicitarCaronaScreenState extends State<SolicitarCaronaScreen> {
     {
       'origem': 'Shopping Aricanduva',
       'destino': 'Rua Tombu',
-      'motorista': 'João',
+      'motorista': 'Maria',
       'horario': '10:00',
       'foto': 'images/profile1.jpg',
       'rating': 4.5,
@@ -27,7 +27,7 @@ class _SolicitarCaronaScreenState extends State<SolicitarCaronaScreen> {
     {
       'origem': 'Rua Tombu',
       'destino': 'Rua Olga Silveira Campor',
-      'motorista': 'Maria',
+      'motorista': 'João',
       'horario': '11:00',
       'foto': 'images/profile2.jpg',
       'rating': 4.8,
@@ -36,7 +36,7 @@ class _SolicitarCaronaScreenState extends State<SolicitarCaronaScreen> {
     {
       'origem': 'Rua Tombu',
       'destino': 'Avenida Paulista',
-      'motorista': 'Carlos',
+      'motorista': 'Ana',
       'horario': '12:00',
       'foto': 'images/profile3.jpg',
       'rating': 4.2,
@@ -45,7 +45,7 @@ class _SolicitarCaronaScreenState extends State<SolicitarCaronaScreen> {
     {
       'origem': 'Metro Itaquera',
       'destino': 'Shopping Aricanduva',
-      'motorista': 'Ana',
+      'motorista': 'Paulo',
       'horario': '13:00',
       'foto': 'images/profile4.jpg',
       'rating': 4.9,
@@ -54,7 +54,7 @@ class _SolicitarCaronaScreenState extends State<SolicitarCaronaScreen> {
     {
       'origem': 'Parque do Carmo',
       'destino': 'Metro Carrão',
-      'motorista': 'Paulo',
+      'motorista': 'Raquel',
       'horario': '14:00',
       'foto': 'images/profile5.jpg',
       'rating': 4.3,
@@ -63,7 +63,7 @@ class _SolicitarCaronaScreenState extends State<SolicitarCaronaScreen> {
     {
       'origem': 'Metro Tatuapé',
       'destino': 'Shopping Aricanduva',
-      'motorista': 'Pedro',
+      'motorista': 'Ana',
       'horario': '15:00',
       'foto': 'images/profile1.jpg',
       'rating': 4.7,

@@ -23,15 +23,15 @@ class MyBottomNavigationBar extends StatelessWidget {
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.directions_car),
-          label: 'Oferecer Carona',
+          label: 'Oferecer',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.add_box),
-          label: 'Solicitar Carona',
+          label: 'Reservar',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.card_giftcard),
-          label: 'Kudos',
+          label: 'Brindes',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.settings),
